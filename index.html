@@ -6,322 +6,478 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Hôtel Musalala — Kalemie, Rive du lac Tanganyika | Réservation directe</title>
 <meta name="description" content="Hôtel Musalala, avenue Tanganyika à Kalemie. Chambres et bungalows face au lac, pêche en pirogue, navette aéroport. Réservez directement sur WhatsApp — sans commission.">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Silkscreen:wght@400;700&display=swap" rel="stylesheet">
 <style>
 :root{
-  --lac:#0B3D4D;
-  --lac2:#0F4C5C;
-  --lac3:#16697A;
-  --sable:#E8D5B7;
-  --ivoire:#FAF6EF;
-  --ivoire2:#F3EDE1;
-  --soleil:#E07A3F;
-  --soleil-d:#C4612A;
-  --encre:#1A2E35;
-  --gris:#5B6B73;
-  --blanc:#FFFFFF;
-  --serif:Georgia,'Times New Roman',serif;
-  --sans:system-ui,-apple-system,'Segoe UI',Roboto,Arial,sans-serif;
-  --ombre:0 10px 30px rgba(11,61,77,.12);
-  --r:14px;
+  --bg:#041519;
+  --bg-2:#062027;
+  --surface:rgba(255,255,255,.07);
+  --surface-strong:rgba(255,255,255,.10);
+  --line:rgba(255,255,255,.12);
+  --line-soft:rgba(255,255,255,.08);
+  --text:#F7F4ED;
+  --muted:rgba(247,244,237,.64);
+  --accent:#F2A46B;
+  --accent-d:#E07A3F;
+  --sand:#E8D5B7;
+  --cta:linear-gradient(to bottom,#2B2B2B,#101010);
+  --sans:'Geist',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+  --pixel:'Silkscreen',cursive;
+  --radius:18px;
 }
 *{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{font-family:var(--sans);color:var(--encre);background:var(--ivoire);line-height:1.6;-webkit-font-smoothing:antialiased}
+html{scroll-behavior:smooth;scroll-padding-top:96px}
+body{font-family:var(--sans);background:var(--bg);color:var(--text);line-height:1.6;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;overflow-x:hidden}
 img{max-width:100%;display:block}
-a{color:inherit}
-.wrap{max-width:1100px;margin:0 auto;padding:0 22px}
-.reveal{opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s ease}
-.reveal.in{opacity:1;transform:none}
+a{color:inherit;text-decoration:none}
+button,input{font:inherit}
+::selection{background:rgba(242,164,107,.28);color:#fff}
+:focus-visible{outline:2px solid rgba(242,164,107,.85);outline-offset:3px}
+.wrap{max-width:1200px;margin:0 auto;padding:0 20px}
+@media(min-width:640px){.wrap{padding:0 32px}}
+@media(min-width:1024px){.wrap{padding:0 48px}}
 
 /* NAV */
-nav{position:fixed;inset:0 0 auto 0;z-index:50;transition:background .3s,box-shadow .3s;padding:14px 0}
-nav.scrolled{background:rgba(250,246,239,.92);backdrop-filter:blur(10px);box-shadow:0 1px 0 rgba(11,61,77,.08)}
-.nav-in{display:flex;align-items:center;justify-content:space-between}
-.logo{font-family:var(--serif);font-size:1.25rem;font-weight:700;text-decoration:none;color:var(--ivoire);letter-spacing:.02em;transition:color .3s}
-nav.scrolled .logo{color:var(--lac)}
-.logo em{font-style:normal;color:var(--soleil)}
-.nav-links{display:flex;gap:26px;list-style:none}
-.nav-links a{text-decoration:none;font-size:.92rem;font-weight:600;color:rgba(255,255,255,.9);transition:color .3s}
-nav.scrolled .nav-links a{color:var(--lac)}
-.nav-links a:hover{color:var(--soleil)}
-.nav-wa{background:var(--soleil);color:#fff!important;padding:9px 18px;border-radius:99px!important;font-size:.9rem!important}
-.nav-wa:hover{background:var(--soleil-d)}
-@media(max-width:760px){.nav-links li:not(:last-child){display:none}}
+.nav{position:fixed;top:0;left:0;right:0;z-index:50;padding:16px 0;border-bottom:1px solid transparent;transition:background .35s ease,border-color .35s ease,backdrop-filter .35s ease}
+.nav.scrolled{background:rgba(4,21,25,.74);-webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px);border-bottom-color:var(--line-soft)}
+.nav-in{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:0 20px}
+@media(min-width:640px){.nav-in{padding:0 32px}}
+@media(min-width:1024px){.nav-in{padding:0 48px}}
+.brand{display:inline-flex;align-items:center;gap:9px;font-size:1.05rem;font-weight:600;letter-spacing:-.02em;color:#fff;white-space:nowrap}
+.brand svg{width:24px;height:24px;flex:none;stroke:currentColor}
+.brand span{font-weight:300;color:rgba(255,255,255,.72)}
+.brand b{font-weight:600;color:#fff}
+.nav-cluster{display:none;align-items:stretch;gap:12px}
+.nav-glass{display:flex;align-items:center;gap:4px;padding:6px;border-radius:999px;background:rgba(255,255,255,.10);-webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px)}
+.nav-glass a{padding:6px 16px;border-radius:999px;font-size:13.5px;font-weight:500;color:rgba(255,255,255,.8);white-space:nowrap;transition:background .2s ease,color .2s ease}
+.nav-glass a:hover{background:rgba(255,255,255,.10);color:#fff}
+.nav-cta{display:inline-flex;align-items:center;padding:0 20px;border-radius:999px;background:var(--cta);color:#fff;font-size:13.5px;font-weight:500;white-space:nowrap;transition:opacity .2s ease}
+.nav-cta:hover{opacity:.9}
+.burger{position:fixed;top:16px;right:20px;z-index:80;display:flex;align-items:center;justify-content:center;width:40px;height:40px;border:0;border-radius:999px;background:rgba(255,255,255,.10);-webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px);color:#fff;cursor:pointer;transition:background .2s ease}
+@media(min-width:640px){.burger{top:20px;right:32px}}
+.burger:hover{background:rgba(255,255,255,.16)}
+.burger svg{position:absolute;width:20px;height:20px;transition:transform .3s ease,opacity .3s ease}
+.burger .i-x{transform:rotate(-90deg) scale(.4);opacity:0}
+.burger.open .i-menu{transform:rotate(90deg) scale(.4);opacity:0}
+.burger.open .i-x{transform:rotate(0) scale(1);opacity:1}
+@media(min-width:768px){.nav-cluster{display:flex}.burger{display:none}}
+@media(min-width:640px){.nav{padding:20px 0}}
+@media(min-width:1024px){.nav{padding:24px 0}}
+
+/* MOBILE DRAWER */
+.menu-backdrop{position:fixed;inset:0;z-index:60;background:rgba(0,0,0,.8);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);opacity:0;pointer-events:none;transition:opacity .3s ease}
+.menu-backdrop.open{opacity:1;pointer-events:auto}
+.menu-panel{position:fixed;top:0;right:0;bottom:0;z-index:60;display:flex;flex-direction:column;width:288px;max-width:88vw;background:rgba(4,16,20,.94);-webkit-backdrop-filter:blur(24px);backdrop-filter:blur(24px);border-left:1px solid var(--line-soft);transform:translateX(100%);transition:transform .5s cubic-bezier(.16,1,.3,1)}
+.menu-panel.open{transform:translateX(0)}
+.menu-links{display:flex;flex-direction:column;gap:8px;padding:104px 24px 0}
+.menu-links a{padding:12px 16px;border-radius:12px;font-size:16px;font-weight:500;color:rgba(255,255,255,.8);opacity:0;transform:translateX(24px);transition:opacity .35s ease,transform .35s ease,background .2s ease,color .2s ease}
+.menu-links a:hover{background:rgba(255,255,255,.08);color:#fff}
+.menu-panel.open .menu-links a{opacity:1;transform:translateX(0)}
+.menu-panel.open .menu-links a:nth-child(1){transition-delay:.06s}
+.menu-panel.open .menu-links a:nth-child(2){transition-delay:.12s}
+.menu-panel.open .menu-links a:nth-child(3){transition-delay:.18s}
+.menu-panel.open .menu-links a:nth-child(4){transition-delay:.24s}
+.menu-foot{margin-top:auto;padding:24px 24px 40px}
+.menu-foot .btn-primary{width:100%;opacity:0;transform:translateY(16px);transition:opacity .4s ease,transform .4s ease}
+.menu-panel.open .menu-foot .btn-primary{opacity:1;transform:translateY(0);transition-delay:.3s}
+@media(min-width:768px){.menu-backdrop,.menu-panel{display:none}}
+
+/* BUTTONS */
+.btn-primary{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:13px 24px;border:1px solid rgba(255,255,255,.14);border-radius:999px;background:var(--cta);color:#fff;font-size:14px;font-weight:500;cursor:pointer;transition:opacity .2s ease,transform .2s ease}
+.btn-primary:hover{opacity:.9}
+.btn-ghost{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:12px 22px;border:1px solid rgba(255,255,255,.3);border-radius:999px;color:#fff;font-size:13.5px;font-weight:500;transition:background .2s ease,border-color .2s ease}
+.btn-ghost:hover{background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.5)}
 
 /* HERO */
-header{position:relative;min-height:100svh;display:flex;align-items:center;color:var(--blanc);overflow:hidden;
-  background:#0B3D4D;perspective:1100px}
-.hero-bg{position:absolute;inset:0;z-index:0;will-change:transform;transform-style:preserve-3d}
-.hero-bg-img{position:absolute;inset:-7%;background:url('images/hero-lac.jpg') center/cover no-repeat;animation:kenburns 24s ease-in-out infinite alternate}
-.hero-bg-ov{position:absolute;inset:0;
-  background:
-   radial-gradient(1200px 600px at 80% -10%,rgba(224,122,63,.3),transparent 60%),
-   radial-gradient(900px 500px at 10% 110%,rgba(22,105,122,.45),transparent 55%),
-   linear-gradient(160deg,rgba(7,43,54,.9) 0%,rgba(11,61,77,.78) 50%,rgba(15,76,92,.66) 100%)}
-@keyframes kenburns{from{transform:scale(1) translate(0,0)}to{transform:scale(1.12) translate(1.8%,-1.4%)}}
-.hero-in{position:relative;z-index:2;padding-top:130px;padding-bottom:150px;max-width:720px}
-.kicker{display:inline-block;font-size:.8rem;letter-spacing:.18em;text-transform:uppercase;color:var(--sable);border:1px solid rgba(232,213,183,.4);padding:7px 16px;border-radius:99px;margin-bottom:26px}
-h1{font-family:var(--serif);font-size:clamp(2.4rem,6vw,4.2rem);line-height:1.08;font-weight:700;margin-bottom:22px}
-h1 em{font-style:normal;color:var(--sable)}
-.lead{font-size:clamp(1.02rem,2vw,1.2rem);color:rgba(255,255,255,.85);max-width:540px;margin-bottom:36px}
-.cta-row{display:flex;gap:14px;flex-wrap:wrap}
-.btn{display:inline-flex;align-items:center;gap:10px;padding:15px 28px;border-radius:99px;text-decoration:none;font-weight:700;font-size:1rem;transition:transform .15s,background .2s;border:none;cursor:pointer}
-.btn:hover{transform:translateY(-2px)}
-.btn-wa{background:#25D366;color:#06281A}
-.btn-wa:hover{background:#1FBB5A}
-.btn-ghost{border:1.5px solid rgba(255,255,255,.5);color:#fff}
-.btn-ghost:hover{border-color:#fff;background:rgba(255,255,255,.08)}
-.hero-fait{margin-top:34px;font-size:.88rem;color:rgba(255,255,255,.6)}
-.waves{position:absolute;left:0;right:0;bottom:-2px;z-index:1;line-height:0}
-.waves svg{width:100%;height:90px;display:block}
+.hero{position:relative;height:100svh;min-height:520px;overflow:hidden;background:var(--bg);padding-top:76px}
+.hero-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;pointer-events:none}
+.hero-shade{position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(to bottom,rgba(4,16,18,.72) 0%,rgba(4,16,18,.34) 22%,rgba(4,16,18,0) 48%),linear-gradient(to top,rgba(4,16,18,.80) 0%,rgba(4,16,18,.44) 30%,rgba(4,16,18,0) 64%)}
+.hero-shell{position:relative;z-index:10;display:flex;flex-direction:column;height:100%}
+.hero-main{display:flex;flex:1;min-height:0;flex-direction:column;gap:24px;overflow-y:auto;padding:16px 20px 32px;scrollbar-width:none}
+.hero-main::-webkit-scrollbar{display:none}
+@media(min-width:640px){.hero-main{padding:16px 32px 40px}}
+.hero-copy{width:100%;max-width:620px;margin-top:auto}
+.hero-kicker{margin-bottom:14px;font-size:11px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--sand);text-shadow:0 1px 14px rgba(0,0,0,.45)}
+h1{font-size:clamp(1.95rem,6.6vw,2.5rem);font-weight:600;line-height:1.06;letter-spacing:-.035em;color:#fff;text-shadow:0 2px 34px rgba(0,0,0,.42)}
+h1 em{font-style:normal;color:var(--sand)}
+.hero-note{margin-top:14px;font-size:12.5px;color:rgba(255,255,255,.66);text-shadow:0 1px 12px rgba(0,0,0,.35)}
+.hero-note b{color:rgba(255,255,255,.88);font-weight:500}
 
-/* BARRE INFOS */
-.faites{background:var(--lac);color:var(--blanc);padding:0 0 64px;margin-top:-1px}
-.faites-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
-.fait{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:var(--r);padding:22px 18px;text-align:center}
-.fait b{display:block;font-family:var(--serif);font-size:1.5rem;color:var(--sable)}
-.fait span{font-size:.85rem;color:rgba(255,255,255,.75)}
-@media(max-width:760px){.faites-grid{grid-template-columns:repeat(2,1fr)}}
+/* BOOKING CAPSULE */
+.book-capsule{display:flex;flex-direction:column;gap:12px;width:100%;max-width:400px;margin-top:26px}
+.book-field{display:flex;align-items:center;gap:10px;height:48px;padding:0 18px;border-radius:999px;background:#fff;color:#141414}
+.book-field svg{width:17px;height:17px;flex:none;color:#6B7280}
+.book-field input{width:100%;min-width:0;border:0;outline:0;background:transparent;color:#141414;font-size:14px}
+.book-field input::placeholder{color:#8A9099}
+.book-capsule .btn-primary{height:48px;border:0}
+@media(min-width:640px){
+  .book-capsule{display:inline-flex;flex-direction:row;align-items:center;gap:0;width:auto;max-width:none;padding:6px;border-radius:999px;background:#fff}
+  .book-field{height:44px;padding:0 14px 0 16px;border-radius:0;border-right:1px solid #E6E6E6;width:196px}
+  .book-capsule .btn-primary{height:44px;margin-left:6px}
+}
+@media(min-width:1024px){
+  h1{font-size:clamp(2.8rem,4.4vw,3.5rem)}
+  .hero{padding-top:92px}
+  .hero-main{flex-direction:row;align-items:flex-end;justify-content:space-between;gap:40px;padding:24px 48px 56px}
+  .hero-copy{margin-top:0}
+}
+
+/* GLASS CARDS */
+.hero-cards{display:flex;width:100%;flex-direction:column;gap:16px}
+.glass{background:rgba(255,255,255,.10);-webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,.10);border-radius:16px;padding:20px;box-shadow:0 10px 40px rgba(0,0,0,.16)}
+.stat-card{display:flex;flex-direction:column;justify-content:space-between}
+.stat-num{font-family:var(--sans);font-size:44px;font-weight:300;line-height:1;letter-spacing:-.04em;color:#fff;font-variant-numeric:tabular-nums}
+.stat-body{margin-top:14px;font-size:13.5px;line-height:1.6;color:rgba(255,255,255,.72)}
+.review-head{display:flex;align-items:center;gap:8px;margin-bottom:14px}
+.review-mark{display:flex;align-items:center;justify-content:center;width:24px;height:24px;border-radius:5px;background:#041216;color:#fff;font-size:11px;font-weight:700;line-height:1}
+.review-brand{font-size:13.5px;font-weight:600;color:#fff}
+.review-quote{font-size:13.5px;line-height:1.65;color:rgba(255,255,255,.82)}
+.reviewer{display:flex;align-items:center;gap:12px;margin-top:18px}
+.reviewer img{width:36px;height:36px;border-radius:50%;object-fit:cover;background:rgba(255,255,255,.2)}
+.reviewer b{display:block;font-size:13.5px;font-weight:600;line-height:1.3}
+.reviewer span{font-size:11.5px;color:rgba(255,255,255,.6)}
+@media(min-width:640px){
+  .hero-cards{flex-direction:row;gap:16px}
+  .glass{width:260px;padding:24px}
+  .stat-num{font-size:46px}
+}
+@media(min-width:1024px){
+  .hero-cards{width:auto;gap:20px}
+}
+
+/* TRUST */
+.trust{border-bottom:1px solid var(--line-soft);background:rgba(255,255,255,.025)}
+.trust-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;padding:22px 0}
+.trust-item{display:flex;align-items:center;justify-content:center;gap:8px;font-size:12.5px;font-weight:500;color:rgba(255,255,255,.72);text-align:center}
+.trust-item svg{width:15px;height:15px;flex:none;color:var(--accent)}
+@media(min-width:768px){.trust-grid{grid-template-columns:repeat(4,1fr);padding:24px 0}.trust-item{font-size:13px}}
 
 /* SECTIONS */
-section{padding:88px 0}
-.sec-titre{text-align:center;max-width:640px;margin:0 auto 54px}
-.sec-titre .kicker{color:var(--soleil);border-color:rgba(224,122,63,.35)}
-h2{font-family:var(--serif);font-size:clamp(1.8rem,4vw,2.6rem);color:var(--lac);line-height:1.15;margin-bottom:14px}
-.sec-titre p{color:var(--gris)}
+.section{padding:72px 0}
+@media(min-width:768px){.section{padding:96px 0}}
+.sec-head{max-width:620px;margin:0 auto 44px;text-align:center}
+.kicker{display:inline-block;margin-bottom:14px;font-size:11px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--accent)}
+h2{font-size:clamp(1.8rem,4vw,2.75rem);font-weight:600;line-height:1.08;letter-spacing:-.025em;color:#fff}
+.sec-head p{margin-top:14px;font-size:14.5px;color:var(--muted)}
+.rooms{background:radial-gradient(900px 400px at 85% 0%,rgba(224,122,63,.08),transparent 60%)}
+.reviews-sec{background:var(--bg-2)}
 
-/* CHAMBRES */
-.chambres{background:var(--ivoire2)}
-.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
-@media(max-width:900px){.cards{grid-template-columns:1fr;max-width:440px;margin:0 auto}}
-.card{background:var(--blanc);border-radius:var(--r);overflow:hidden;box-shadow:var(--ombre);display:flex;flex-direction:column;transition:transform .25s}
-.card:hover{transform:translateY(-6px)}
-.card-vis{height:180px;background-size:cover;background-position:center}
-.vis-1{background-image:url('images/chambre-standard.jpg')}
-.vis-2{background-image:url('images/chambre-vue-lac.jpg')}
-.vis-3{background-image:url('images/bungalow-famille.jpg')}
-.card-body{padding:26px;display:flex;flex-direction:column;flex:1}
-.card h3{font-family:var(--serif);font-size:1.35rem;color:var(--lac);margin-bottom:6px}
-.prix{font-size:.95rem;color:var(--soleil);font-weight:700;margin-bottom:14px}
-.prix small{color:var(--gris);font-weight:400}
-.card ul{list-style:none;margin-bottom:22px;flex:1}
-.card li{padding:5px 0 5px 26px;position:relative;font-size:.93rem;color:var(--gris)}
-.card li::before{content:"✓";position:absolute;left:0;color:var(--lac3);font-weight:700}
-.btn-card{display:block;text-align:center;padding:13px;border-radius:10px;background:var(--lac);color:#fff;text-decoration:none;font-weight:700;font-size:.95rem;transition:background .2s}
-.btn-card:hover{background:var(--lac3)}
+/* ROOM CARDS */
+.room-grid{display:grid;grid-template-columns:1fr;gap:20px;max-width:420px;margin:0 auto}
+@media(min-width:768px){.room-grid{grid-template-columns:repeat(3,1fr);max-width:none}}
+.room{display:flex;flex-direction:column;overflow:hidden;border:1px solid var(--line);border-radius:var(--radius);background:var(--surface);transition:transform .3s ease,border-color .3s ease}
+.room:hover{transform:translateY(-4px);border-color:rgba(255,255,255,.22)}
+.room-media{position:relative;height:200px;overflow:hidden}
+.room-media img{width:100%;height:100%;object-fit:cover;transition:transform .7s ease}
+.room:hover .room-media img{transform:scale(1.05)}
+.room-body{display:flex;flex:1;flex-direction:column;padding:22px}
+.room-body h3{font-size:19px;font-weight:600;letter-spacing:-.015em}
+.price{margin-top:3px;font-size:14px;font-weight:600;color:var(--accent)}
+.price small{font-weight:400;color:var(--muted)}
+.room ul{display:flex;flex:1;flex-direction:column;gap:8px;margin:16px 0 22px;list-style:none}
+.room li{position:relative;padding-left:22px;font-size:13.5px;color:var(--muted)}
+.room li::before{content:"✓";position:absolute;left:0;color:var(--accent);font-weight:700}
+.room .btn-primary{width:100%}
 
-/* EXPÉRIENCES */
-.exp-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
-@media(max-width:900px){.exp-grid{grid-template-columns:repeat(2,1fr)}}
-.exp{position:relative;border-radius:var(--r);aspect-ratio:3/4;overflow:hidden;display:flex;align-items:flex-end;padding:18px;color:#fff}
-.exp:nth-child(1){background:linear-gradient(180deg,transparent 40%,rgba(7,43,54,.85)),url('images/peche-pirogue.jpg') center/cover}
-.exp:nth-child(2){background:linear-gradient(180deg,transparent 40%,rgba(7,43,54,.85)),url('images/cuisine-lac.jpg') center/cover}
-.exp:nth-child(3){background:linear-gradient(180deg,transparent 40%,rgba(7,43,54,.85)),url('images/excursion-idjwi.jpg') center/cover}
-.exp:nth-child(4){background:linear-gradient(180deg,transparent 40%,rgba(7,43,54,.85)),url('images/navette-aeroport.jpg') center/cover}
-.exp b{font-family:var(--serif);font-size:1.05rem;display:block}
-.exp span{font-size:.8rem;color:rgba(255,255,255,.8)}
+/* EXPERIENCES */
+.exp-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media(min-width:900px){.exp-grid{grid-template-columns:repeat(4,1fr);gap:18px}}
+.exp{position:relative;display:flex;flex-direction:column;justify-content:flex-end;aspect-ratio:3/4;padding:18px;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;background:#0A2228;transition:transform .3s ease,border-color .3s ease}
+.exp:hover{transform:translateY(-4px);border-color:rgba(255,255,255,.24)}
+.exp::after{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(4,16,18,0) 36%,rgba(4,16,18,.86) 100%);pointer-events:none}
+.exp-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .7s ease}
+.exp:hover .exp-img{transform:scale(1.05)}
+.exp-body{position:relative;z-index:2}
+.exp h3{font-size:16.5px;font-weight:600;line-height:1.25}
+.exp p{margin-top:4px;font-size:12px;color:rgba(255,255,255,.7)}
 
-/* AVIS */
-.avis{background:var(--lac);color:#fff}
-.avis h2{color:#fff}
-.avis .sec-titre p{color:rgba(255,255,255,.7)}
-.avis-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
-@media(max-width:900px){.avis-grid{grid-template-columns:1fr;max-width:480px;margin:0 auto}}
-.avis-card{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-radius:var(--r);padding:26px}
-.etoiles{color:var(--sable);letter-spacing:3px;margin-bottom:12px}
-.avis-card p{font-size:.95rem;color:rgba(255,255,255,.85);font-style:italic;margin-bottom:16px}
-.avis-card b{font-size:.88rem;color:var(--sable)}
+/* REVIEWS */
+.review-grid{display:grid;grid-template-columns:1fr;gap:18px;max-width:480px;margin:0 auto}
+@media(min-width:900px){.review-grid{grid-template-columns:repeat(3,1fr);max-width:none}}
+.review-card{padding:26px;border:1px solid var(--line);border-radius:var(--radius);background:var(--surface)}
+.stars{margin-bottom:13px;font-size:12px;letter-spacing:3px;color:var(--sand)}
+.review-card p{font-size:14px;line-height:1.7;font-style:italic;color:rgba(255,255,255,.82)}
+.review-card b{display:block;margin-top:18px;font-size:12.5px;font-weight:500;color:var(--sand)}
 
 /* CONTACT */
-.contact-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:start}
-@media(max-width:860px){.contact-grid{grid-template-columns:1fr}}
-.contact-box{background:var(--blanc);border-radius:var(--r);box-shadow:var(--ombre);padding:34px}
-.contact-box h3{font-family:var(--serif);color:var(--lac);font-size:1.3rem;margin-bottom:18px}
-.info-ligne{display:flex;gap:14px;padding:12px 0;border-bottom:1px solid var(--ivoire2);font-size:.95rem}
-.info-ligne:last-of-type{border:none}
-.info-ligne b{min-width:92px;color:var(--lac)}
-.info-ligne span{color:var(--gris)}
-.btn-wa-block{margin-top:24px;width:100%;justify-content:center;font-size:1.05rem;padding:17px}
-.map-card{background:linear-gradient(160deg,var(--lac2),var(--lac3));border-radius:var(--r);color:#fff;padding:34px;height:100%;display:flex;flex-direction:column;justify-content:center}
-.map-card h3{font-family:var(--serif);font-size:1.3rem;margin-bottom:12px;color:var(--sable)}
-.map-card p{color:rgba(255,255,255,.85);margin-bottom:22px;font-size:.95rem}
-.btn-map{align-self:flex-start;border:1.5px solid rgba(255,255,255,.5);color:#fff;padding:12px 22px;border-radius:99px;text-decoration:none;font-weight:600;font-size:.9rem}
-.btn-map:hover{background:rgba(255,255,255,.1)}
+.contact-grid{display:grid;grid-template-columns:1fr;gap:20px}
+.contact-grid>*{min-width:0}
+@media(min-width:860px){.contact-grid{grid-template-columns:1.05fr .95fr;gap:24px}}
+.panel{padding:26px;border:1px solid var(--line);border-radius:var(--radius);background:var(--surface)}
+@media(min-width:640px){.panel{padding:32px}}
+.panel h3{font-size:20px;font-weight:600;letter-spacing:-.015em}
+.info-row{display:flex;gap:16px;padding:13px 0;border-bottom:1px solid var(--line-soft);font-size:14px}
+.info-row:last-of-type{border-bottom:0}
+.info-row b{min-width:100px;font-weight:500;color:rgba(255,255,255,.92)}
+.info-row span{min-width:0;color:var(--muted);overflow-wrap:anywhere}
+.panel .btn-primary{width:100%;margin-top:22px}
+.map-card{display:flex;flex-direction:column;justify-content:center;background:radial-gradient(120% 120% at 80% 0%,rgba(224,122,63,.20),transparent 55%),linear-gradient(160deg,#122F38,#061A20)}
+.map-card h3{color:var(--sand)}
+.map-card p{margin-top:10px;font-size:14px;color:var(--muted)}
+.map-card .btn-ghost{align-self:flex-start;margin-top:22px}
 
 /* FOOTER */
-footer{background:#072B36;color:rgba(255,255,255,.65);padding:44px 0;text-align:center;font-size:.88rem}
-footer .logo{color:#fff;display:inline-block;margin-bottom:10px}
-footer a{color:var(--sable);text-decoration:none}
+footer{padding:44px 0;border-top:1px solid var(--line-soft);background:#031114;text-align:center;font-size:12.5px;color:rgba(255,255,255,.5)}
+footer .brand{justify-content:center;margin-bottom:10px;font-size:.98rem}
+footer .brand span{color:rgba(255,255,255,.6)}
+footer a{color:var(--sand);transition:color .2s ease}
+footer a:hover{color:#fff}
+footer p+p{margin-top:8px}
 
-/* WHATSAPP FLOTTANT */
-.wa-float{position:fixed;right:20px;bottom:20px;z-index:60;width:60px;height:60px;border-radius:50%;background:#25D366;color:#fff;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 24px rgba(0,0,0,.28);text-decoration:none;transition:transform .2s}
-.wa-float:hover{transform:scale(1.08)}
-.wa-float svg{width:32px;height:32px;fill:currentColor}
+/* WHATSAPP */
+.wa-float{position:fixed;right:20px;bottom:20px;z-index:70;display:flex;align-items:center;justify-content:center;width:56px;height:56px;border-radius:50%;background:#25D366;box-shadow:0 10px 30px rgba(0,0,0,.3);opacity:0;pointer-events:none;transform:translateY(12px);transition:opacity .3s ease,transform .3s ease}
+.wa-float.visible{opacity:1;pointer-events:auto;transform:translateY(0)}
+.wa-float:hover{transform:scale(1.06)}
+.wa-float svg{width:29px;height:29px;fill:#fff}
 
-@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.reveal{opacity:1;transform:none;transition:none}.hero-bg-img{animation:none}.hero-bg{transform:none!important}}
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease}
+.reveal.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .reveal{opacity:1;transform:none;transition:none}
+  .room,.exp,.wa-float,.burger svg,.menu-panel,.menu-backdrop,.menu-links a,.menu-foot .btn-primary{transition:none}
+}
 </style>
+<noscript><style>.reveal{opacity:1;transform:none}.menu-panel,.menu-backdrop{display:none}</style></noscript>
 </head>
 <body>
 
-<nav id="nav">
-  <div class="wrap nav-in">
-    <a class="logo" href="#top">Hôtel <em>Musalala</em></a>
-    <ul class="nav-links">
-      <li><a href="#chambres">Chambres</a></li>
-      <li><a href="#experiences">Expériences</a></li>
-      <li><a href="#avis">Avis</a></li>
-      <li><a href="#contact">Contact</a></li>
-      <li><a class="nav-wa" href="https://wa.me/243999000000?text=Bonjour%2C%20je%20souhaite%20r%C3%A9server%20une%20chambre%20%C3%A0%20l%27H%C3%B4tel%20Musalala." target="_blank" rel="noopener">Réserver</a></li>
-    </ul>
+<nav class="nav" id="nav">
+  <div class="nav-in">
+    <a class="brand" href="#top" aria-label="Hôtel Musalala, retour en haut">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <circle cx="18" cy="6" r="2.4"/>
+        <path d="M2 14c2.4-2 4.8-2 7.2 0s4.8 2 7.2 0 4.8-2 7.2 0"/>
+        <path d="M2 19c2.4-2 4.8-2 7.2 0s4.8 2 7.2 0 4.8-2 7.2 0"/>
+      </svg>
+      <span>Hôtel</span> <b>Musalala</b>
+    </a>
+
+    <div class="nav-cluster">
+      <div class="nav-glass">
+        <a href="#chambres">Chambres</a>
+        <a href="#experiences">Expériences</a>
+        <a href="#avis">Avis</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <a class="nav-cta" href="#" data-wa="Bonjour Hôtel Musalala, je souhaite réserver une chambre.">Réserver</a>
+    </div>
   </div>
 </nav>
 
-<header id="top">
-  <div class="hero-bg" aria-hidden="true"><div class="hero-bg-img"></div><div class="hero-bg-ov"></div></div>
-  <div class="wrap hero-in">
-    <span class="kicker">Kalemie · Avenue Tanganyika · Rive du lac</span>
-    <h1>Le lac Tanganyika,<br><em>chez vous.</em></h1>
-    <p class="lead">Un refuge simple et confortable au bord du Tanganyika, à deux pas du marché de Jumbo. Réservez en 2 minutes sur WhatsApp — sans commission, sans intermédiaire.</p>
-    <div class="cta-row">
-      <a class="btn btn-wa" href="https://wa.me/243999000000?text=Bonjour%2C%20je%20souhaite%20r%C3%A9server%20une%20chambre%20%C3%A0%20l%27H%C3%B4tel%20Musalala." target="_blank" rel="noopener">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.7 14.9L2 22l5.3-1.4A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3.1.8.8-3-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.6-6.1c-.3-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1-.2.3-.6.8-.8 1-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.4-3c-.3-.4 0-.5.2-.7l.4-.5c.1-.2.1-.3 0-.5l-.8-1.9c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.9.9-1.2 2-.9 3.2a9.4 9.4 0 0 0 4.8 5.1c2.6 1.2 3.5 1 4.2.9.6-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.1-1.2-.1-.1-.3-.2-.6-.3z"/></svg>
-        Réserver sur WhatsApp
-      </a>
-      <a class="btn btn-ghost" href="#chambres">Voir les chambres</a>
-    </div>
-    <p class="hero-fait">★ 4,5/5 · 86 avis voyageurs · En bord de lac, à 15 min de l'aéroport (FMI)</p>
+<button class="burger" id="burger" type="button" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="menuPanel">
+  <svg class="i-menu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+  <svg class="i-x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg>
+</button>
+
+<div class="menu-backdrop" id="menuBackdrop"></div>
+<aside class="menu-panel" id="menuPanel" aria-label="Menu" aria-hidden="true" inert>
+  <div class="menu-links">
+    <a href="#chambres">Chambres</a>
+    <a href="#experiences">Expériences</a>
+    <a href="#avis">Avis</a>
+    <a href="#contact">Contact</a>
   </div>
-  <div class="waves" aria-hidden="true">
-    <svg viewBox="0 0 1440 90" preserveAspectRatio="none"><path fill="#0B3D4D" d="M0,50 C240,90 480,10 720,40 C960,70 1200,20 1440,55 L1440,90 L0,90 Z"/><path fill="#FAF6EF" opacity=".35" d="M0,65 C300,30 600,85 900,55 C1140,35 1320,70 1440,60 L1440,90 L0,90 Z" transform="translate(0,10)"/></svg>
+  <div class="menu-foot">
+    <a class="btn-primary" href="#" data-wa="Bonjour Hôtel Musalala, je souhaite réserver une chambre.">Réserver</a>
+  </div>
+</aside>
+
+<header class="hero" id="top">
+  <video class="hero-video" id="heroVideo" src="video/hero.mp4" poster="images/hero-poster.jpg" autoplay loop muted playsinline preload="auto" disablepictureinpicture aria-hidden="true" tabindex="-1"></video>
+  <div class="hero-shade" aria-hidden="true"></div>
+
+  <div class="hero-shell">
+    <main class="hero-main">
+      <div class="hero-copy">
+        <p class="hero-kicker">Kalemie · Rive du lac Tanganyika</p>
+        <h1>Le lac Tanganyika,<br><em>chez vous.</em></h1>
+
+        <form class="book-capsule" id="booking" novalidate>
+          <div class="book-field">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><rect x="3" y="4.5" width="18" height="16" rx="2.5"/><path d="M16 2.5v4M8 2.5v4M3 10h18"/></svg>
+            <input id="arrivee" name="arrivee" type="text" inputmode="none" autocomplete="off" placeholder="Arrivée" aria-label="Date d'arrivée">
+          </div>
+          <button class="btn-primary" type="submit">Réserver</button>
+        </form>
+
+        <p class="hero-note">Départ et voyageurs précisés sur WhatsApp · <b>Réponse en moins d'une heure</b></p>
+      </div>
+
+      <div class="hero-cards">
+        <div class="glass stat-card">
+          <p class="stat-num">18</p>
+          <p class="stat-body">chambres &amp; bungalows, tous climatisés, à deux pas du marché de Jumbo.</p>
+        </div>
+
+        <figure class="glass review-card">
+          <div class="review-head">
+            <span class="review-mark">M</span>
+            <span class="review-brand">Musalala</span>
+          </div>
+          <blockquote class="review-quote">« J'ai réservé sur WhatsApp en 2 minutes depuis Lubumbashi. Prix juste, sans commission. »</blockquote>
+          <figcaption class="reviewer">
+            <img src="https://i.pravatar.cc/72?img=12" alt="Marc D." width="36" height="36" loading="lazy">
+            <div><b>Marc D.</b><span>Lubumbashi</span></div>
+          </figcaption>
+        </figure>
+      </div>
+    </main>
   </div>
 </header>
 
-<div class="faites">
-  <div class="wrap faites-grid" style="padding-top:0">
-    <div class="fait reveal" style="margin-top:-44px"><b>18</b><span>chambres &amp; bungalows</span></div>
-    <div class="fait reveal" style="margin-top:-44px"><b>2 min</b><span>pour réserver en ligne</span></div>
-    <div class="fait reveal" style="margin-top:-44px"><b>15 min</b><span>de l'aéroport (FMI)</span></div>
-    <div class="fait reveal" style="margin-top:-44px"><b>0 %</b><span>de commission OTA</span></div>
+<div class="trust">
+  <div class="wrap trust-grid">
+    <div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12c2.4-2 4.8-2 7.2 0s4.8 2 7.2 0 4.8-2 7.2 0"/><path d="M2 17c2.4-2 4.8-2 7.2 0s4.8 2 7.2 0 4.8-2 7.2 0"/></svg>Rive du lac</div>
+    <div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9h12v6a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4V9Z"/><path d="M16 10h2.5a2.5 2.5 0 0 1 0 5H16"/><path d="M7 5.5c0-1 1-1 1-2M11 5.5c0-1 1-1 1-2"/></svg>Petit-déjeuner inclus</div>
+    <div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 16V8a2 2 0 0 1 2-2h11l4 4v6"/><path d="M3 16h18M7 19a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3ZM17 19a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3Z"/></svg>Navette FMI 24h/24</div>
+    <div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.6 13.4 12 22l-9-9V4h9l8.6 8.6a1 1 0 0 1 0 1.4Z"/><circle cx="7.5" cy="7.5" r="1.2"/></svg>0 % de commission</div>
   </div>
 </div>
 
-<section id="chambres" class="chambres">
+<section class="section rooms" id="chambres">
   <div class="wrap">
-    <div class="sec-titre reveal">
+    <div class="sec-head reveal">
       <span class="kicker">Nos chambres</span>
       <h2>Trois façons de dormir au bord du lac</h2>
       <p>Chambres et bungalows climatisés, eau chaude 24h/24, petit-déjeuner local inclus.</p>
     </div>
-    <div class="cards">
-      <div class="card reveal">
-        <div class="card-vis vis-1"></div>
-        <div class="card-body">
+
+    <div class="room-grid">
+      <article class="room reveal">
+        <div class="room-media"><img src="images/chambre-standard.jpg" alt="Chambre Standard de l'Hôtel Musalala" loading="lazy" width="1264" height="1264"></div>
+        <div class="room-body">
           <h3>Chambre Standard</h3>
-          <p class="prix">40 $ <small>/ nuit</small></p>
+          <p class="price">40 $ <small>/ nuit</small></p>
           <ul>
             <li>Lit double ou deux lits</li>
             <li>Climatisation &amp; ventilateur</li>
             <li>Salle d'eau privée</li>
             <li>Petit-déjeuner local inclus</li>
           </ul>
-          <a class="btn-card" href="https://wa.me/243999000000?text=Bonjour%2C%20je%20souhaite%20r%C3%A9server%20une%20Chambre%20Standard." target="_blank" rel="noopener">Réserver cette chambre</a>
+          <a class="btn-primary" href="#" data-wa="Bonjour Hôtel Musalala, je souhaite réserver une Chambre Standard.">Réserver cette chambre</a>
         </div>
-      </div>
-      <div class="card reveal">
-        <div class="card-vis vis-2"></div>
-        <div class="card-body">
+      </article>
+
+      <article class="room reveal">
+        <div class="room-media"><img src="images/chambre-vue-lac.jpg" alt="Chambre Vue Lac avec balcon sur le Tanganyika" loading="lazy" width="1264" height="1264"></div>
+        <div class="room-body">
           <h3>Chambre Vue Lac</h3>
-          <p class="prix">70 $ <small>/ nuit</small></p>
+          <p class="price">70 $ <small>/ nuit</small></p>
           <ul>
             <li>Balcon privé sur le Tanganyika</li>
             <li>Hamac &amp; transat en bord d'eau</li>
             <li>Machine à café &amp; eau minérale</li>
             <li>Petit-déjeuner inclus</li>
           </ul>
-          <a class="btn-card" href="https://wa.me/243999000000?text=Bonjour%2C%20je%20souhaite%20r%C3%A9server%20une%20Chambre%20Vue%20Lac." target="_blank" rel="noopener">Réserver cette chambre</a>
+          <a class="btn-primary" href="#" data-wa="Bonjour Hôtel Musalala, je souhaite réserver une Chambre Vue Lac.">Réserver cette chambre</a>
         </div>
-      </div>
-      <div class="card reveal">
-        <div class="card-vis vis-3"></div>
-        <div class="card-body">
+      </article>
+
+      <article class="room reveal">
+        <div class="room-media"><img src="images/bungalow-famille.jpg" alt="Bungalow Famille au bord du lac" loading="lazy" width="1264" height="1264"></div>
+        <div class="room-body">
           <h3>Bungalow Famille</h3>
-          <p class="prix">100 $ <small>/ nuit</small></p>
+          <p class="price">100 $ <small>/ nuit</small></p>
           <ul>
             <li>2 chambres + salon</li>
             <li>Terrasse ombragée &amp; barbecue</li>
             <li>Idéal familles &amp; groupes</li>
             <li>Navette aéroport offerte</li>
           </ul>
-          <a class="btn-card" href="https://wa.me/243999000000?text=Bonjour%2C%20je%20souhaite%20r%C3%A9server%20un%20Bungalow%20Famille." target="_blank" rel="noopener">Réserver ce bungalow</a>
+          <a class="btn-primary" href="#" data-wa="Bonjour Hôtel Musalala, je souhaite réserver un Bungalow Famille.">Réserver ce bungalow</a>
         </div>
-      </div>
+      </article>
     </div>
   </div>
 </section>
 
-<section id="experiences">
+<section class="section" id="experiences">
   <div class="wrap">
-    <div class="sec-titre reveal">
+    <div class="sec-head reveal">
       <span class="kicker">Expériences</span>
       <h2>Au-delà de la chambre</h2>
       <p>Pêche, marchés, îles : le lac Tanganyika rythme la vie à Musalala.</p>
     </div>
+
     <div class="exp-grid">
-      <div class="exp reveal"><div><b>Pêche en pirogue</b><span>Sortie matinale avec pêcheurs locaux · 20 $</span></div></div>
-      <div class="exp reveal"><div><b>Cuisine du lac</b><span>Poisson frais du Tanganyika &amp; moambé</span></div></div>
-      <div class="exp reveal"><div><b>Excursion Idjwi</b><span>La grande île lacustre · sortie d'une journée</span></div></div>
-      <div class="exp reveal"><div><b>Navette aéroport</b><span>Service 24h/24 · FMI</span></div></div>
+      <article class="exp reveal">
+        <img class="exp-img" src="images/peche-pirogue.jpg" alt="Pêcheurs en pirogue au lever du soleil sur le lac Tanganyika" loading="lazy" width="1264" height="1264">
+        <div class="exp-body"><h3>Pêche en pirogue</h3><p>Sortie matinale avec pêcheurs locaux · 20 $</p></div>
+      </article>
+
+      <article class="exp reveal">
+        <img class="exp-img" src="images/cuisine-lac.jpg" alt="Poisson grillé du lac Tanganyika servi avec riz et bananes plantain" loading="lazy" width="1264" height="1264">
+        <div class="exp-body"><h3>Cuisine du lac</h3><p>Poisson frais du Tanganyika &amp; moambé</p></div>
+      </article>
+
+      <article class="exp reveal">
+        <img class="exp-img" src="images/excursion-idjwi.jpg" alt="Excursion en bateau vers l'île Idjwi" loading="lazy" width="1264" height="1264">
+        <div class="exp-body"><h3>Excursion Idjwi</h3><p>La grande île lacustre · sortie d'une journée</p></div>
+      </article>
+
+      <article class="exp reveal">
+        <img class="exp-img" src="images/navette-aeroport.jpg" alt="Navette de l'aéroport de Kalemie" loading="lazy" width="677" height="783">
+        <div class="exp-body"><h3>Navette aéroport</h3><p>Service 24h/24 · FMI</p></div>
+      </article>
     </div>
   </div>
 </section>
 
-<section id="avis" class="avis">
+<section class="section reviews-sec" id="avis">
   <div class="wrap">
-    <div class="sec-titre reveal">
+    <div class="sec-head reveal">
       <span class="kicker">Ils sont venus</span>
       <h2>Ce que disent nos voyageurs</h2>
-      <p>Avis vérifiés — affichés automatiquement, sans filtre.</p>
+      <p>Avis vérifiés — affichés sans filtre.</p>
     </div>
-    <div class="avis-grid">
-      <div class="avis-card reveal">
-        <div class="etoiles">★★★★★</div>
+
+    <div class="review-grid">
+      <article class="review-card reveal">
+        <div class="stars">★★★★★</div>
         <p>« Chambre impeccable, vue lac magnifique, et le personnel nous a récupérés à l'aéroport à minuit. »</p>
         <b>— Sophie K., Kinshasa</b>
-      </div>
-      <div class="avis-card reveal">
-        <div class="etoiles">★★★★★</div>
+      </article>
+      <article class="review-card reveal">
+        <div class="stars">★★★★★</div>
         <p>« J'ai réservé sur WhatsApp en 2 minutes depuis Lubumbashi. Prix juste, sans commission. »</p>
         <b>— Marc D., Lubumbashi</b>
-      </div>
-      <div class="avis-card reveal">
-        <div class="etoiles">★★★★☆</div>
+      </article>
+      <article class="review-card reveal">
+        <div class="stars">★★★★☆</div>
         <p>« Village tranquille au bord de l'eau, idéal pour une escale de quelques jours avant de partir vers le lac. »</p>
         <b>— Amina H., Nairobi</b>
-      </div>
+      </article>
     </div>
   </div>
 </section>
 
-<section id="contact">
+<section class="section" id="contact">
   <div class="wrap">
-    <div class="sec-titre reveal">
+    <div class="sec-head reveal">
       <span class="kicker">Contact &amp; réservation</span>
       <h2>Une question ? Écrivez-nous.</h2>
       <p>Réponse en moins d'une heure, 7j/7, en français ou en swahili.</p>
     </div>
+
     <div class="contact-grid">
-      <div class="contact-box reveal">
+      <div class="panel reveal">
         <h3>Coordonnées</h3>
-        <div class="info-ligne"><b>Adresse</b><span>Avenue Tanganyika, rive du lac, Kalemie, Tanganyika, RDC</span></div>
-        <div class="info-ligne"><b>Téléphone</b><span>+243 999 000 000</span></div>
-        <div class="info-ligne"><b>E-mail</b><span>reservation@exemple.cd</span></div>
-        <div class="info-ligne"><b>Réception</b><span>Ouverte 24h/24 · FR · SW · EN</span></div>
-        <a class="btn btn-wa btn-wa-block" href="https://wa.me/243999000000?text=Bonjour%2C%20une%20question%20sur%20votre%20h%C3%B4tel." target="_blank" rel="noopener">Écrire sur WhatsApp</a>
+        <div class="info-row"><b>Adresse</b><span>Avenue Tanganyika, rive du lac, Kalemie, Tanganyika, RDC</span></div>
+        <div class="info-row"><b>Téléphone</b><span>+243 999 000 000</span></div>
+        <div class="info-row"><b>E-mail</b><span>reservation@exemple.cd</span></div>
+        <div class="info-row"><b>Réception</b><span>Ouverte 24h/24 · FR · SW · EN</span></div>
+        <a class="btn-primary" href="#" data-wa="Bonjour Hôtel Musalala, une question sur votre hôtel.">Écrire sur WhatsApp</a>
       </div>
-      <div class="map-card reveal">
+
+      <div class="panel map-card reveal">
         <h3>Nous trouver</h3>
         <p>En bord du lac Tanganyika sur l'Avenue Tanganyika, à 15 minutes de l'aéroport (FMI), près du marché de Jumbo.</p>
-        <a class="btn-map" href="https://www.google.com/maps/search/Musalala+Hotel+Kalemie" target="_blank" rel="noopener">Ouvrir dans Google Maps →</a>
+        <a class="btn-ghost" href="https://www.google.com/maps/search/Musalala+Hotel+Kalemie" target="_blank" rel="noopener">Ouvrir dans Google Maps →</a>
       </div>
     </div>
   </div>
@@ -329,41 +485,123 @@ footer a{color:var(--sable);text-decoration:none}
 
 <footer>
   <div class="wrap">
-    <a class="logo" href="#top">Hôtel <em style="color:var(--soleil)">Musalala</em></a>
-    <p>Avenue Tanganyika, Kalemie · RDC · <a href="https://wa.me/243999000000" target="_blank" rel="noopener">WhatsApp</a></p>
-    <p style="margin-top:8px">© <span id="year"></span> Hôtel Musalala — Tous droits réservés</p>
+    <a class="brand" href="#top" aria-label="Hôtel Musalala">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <circle cx="18" cy="6" r="2.4"/>
+        <path d="M2 14c2.4-2 4.8-2 7.2 0s4.8 2 7.2 0 4.8-2 7.2 0"/>
+        <path d="M2 19c2.4-2 4.8-2 7.2 0s4.8 2 7.2 0 4.8-2 7.2 0"/>
+      </svg>
+      <span>Hôtel</span> <b>Musalala</b>
+    </a>
+    <p>Avenue Tanganyika, Kalemie · RDC · <a href="#" data-wa="Bonjour Hôtel Musalala, je souhaite réserver une chambre.">WhatsApp</a></p>
+    <p>© <span id="year"></span> Hôtel Musalala — Tous droits réservés</p>
   </div>
 </footer>
 
-<a class="wa-float" href="https://wa.me/243999000000?text=Bonjour%2C%20je%20souhaite%20r%C3%A9server%20une%20chambre." target="_blank" rel="noopener" aria-label="Réserver sur WhatsApp">
-  <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.7 14.9L2 22l5.3-1.4A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3.1.8.8-3-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.6-6.1c-.3-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1-.2.3-.6.8-.8 1-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.4-3c-.3-.4 0-.5.2-.7l.4-.5c.1-.2.1-.3 0-.5l-.8-1.9c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.9.9-1.2 2-.9 3.2a9.4 9.4 0 0 0 4.8 5.1c2.6 1.2 3.5 1 4.2.9.6-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.1-1.2-.1-.1-.3-.2-.6-.3z"/></svg>
+<a class="wa-float" id="waFloat" href="#" data-wa="Bonjour Hôtel Musalala, je souhaite réserver une chambre." aria-label="Réserver sur WhatsApp">
+  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.7 14.9L2 22l5.3-1.4A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3.1.8.8-3-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.6-6.1c-.3-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1-.2.3-.6.8-.8 1-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.4-3c-.3-.4 0-.5.2-.7l.4-.5c.1-.2.1-.3 0-.5l-.8-1.9c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.9.9-1.2 2-.9 3.2a9.4 9.4 0 0 0 4.8 5.1c2.6 1.2 3.5 1 4.2.9.6-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.1-1.2-.1-.1-.3-.2-.6-.3z"/></svg>
 </a>
 
 <script>
-document.getElementById('year').textContent=new Date().getFullYear();
-const nav=document.getElementById('nav');
-addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>60),{passive:true});
-const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.15});
-document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
-</script>
-<script>
 (function(){
-  var bg=document.querySelector('.hero-bg'),hdr=document.querySelector('header');
-  if(!bg||!hdr||matchMedia('(prefers-reduced-motion:reduce)').matches)return;
-  var fine=matchMedia('(pointer:fine)').matches,tx=0,ty=0,cx=0,cy=0;
-  if(fine){
-    hdr.addEventListener('mousemove',function(e){
-      var r=hdr.getBoundingClientRect();
-      tx=(e.clientX-r.width/2)/r.width;ty=(e.clientY-r.height/2)/r.height;
-    });
-    hdr.addEventListener('mouseleave',function(){tx=0;ty=0});
+  var WHATSAPP_NUMBER = '243999000000';
+  var DEFAULT_MESSAGE = 'Bonjour Hôtel Musalala, je souhaite réserver une chambre.';
+
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  document.querySelectorAll('[data-wa]').forEach(function(link){
+    var message = link.getAttribute('data-wa') || DEFAULT_MESSAGE;
+    link.href = 'https://wa.me/' + WHATSAPP_NUMBER + '?text=' + encodeURIComponent(message);
+    if (link.classList.contains('nav-cta') || link.classList.contains('wa-float')) {
+      link.target = '_blank';
+      link.rel = 'noopener';
+    }
+  });
+
+  var nav = document.getElementById('nav');
+  var burger = document.getElementById('burger');
+  var panel = document.getElementById('menuPanel');
+  var backdrop = document.getElementById('menuBackdrop');
+  var waFloat = document.getElementById('waFloat');
+  var menuOpen = false;
+
+  function setMenu(open){
+    menuOpen = open;
+    burger.classList.toggle('open', open);
+    burger.setAttribute('aria-expanded', String(open));
+    burger.setAttribute('aria-label', open ? 'Fermer le menu' : 'Ouvrir le menu');
+    panel.classList.toggle('open', open);
+    panel.setAttribute('aria-hidden', String(!open));
+    panel.inert = !open;
+    backdrop.classList.toggle('open', open);
+    document.body.style.overflow = open ? 'hidden' : '';
   }
-  (function loop(){
-    cx+=(tx-cx)*.06;cy+=(ty-cy)*.06;
-    var s=Math.max(0,Math.min(scrollY,hdr.offsetHeight))*0.28;
-    bg.style.transform='translate3d('+(cx*-26)+'px,'+(cy*-18+s)+'px,0) rotateY('+(cx*5)+'deg) rotateX('+(cy*-4)+'deg)';
-    requestAnimationFrame(loop);
-  })();
+
+  burger.addEventListener('click', function(){ setMenu(!menuOpen); });
+  backdrop.addEventListener('click', function(){ setMenu(false); });
+
+  document.querySelectorAll('.menu-links a, .menu-foot a').forEach(function(link){
+    link.addEventListener('click', function(){ setMenu(false); });
+  });
+
+  window.addEventListener('keydown', function(event){
+    if (event.key === 'Escape' && menuOpen) setMenu(false);
+  });
+
+  function onScroll(){
+    var y = window.scrollY || window.pageYOffset;
+    nav.classList.toggle('scrolled', y > 40);
+    waFloat.classList.toggle('visible', y > window.innerHeight * 0.7);
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  var video = document.getElementById('heroVideo');
+  if (video && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    video.removeAttribute('autoplay');
+    video.pause();
+  }
+
+  var dateInput = document.getElementById('arrivee');
+  if (dateInput) {
+    dateInput.addEventListener('focus', function(){
+      if (dateInput.type !== 'date') {
+        dateInput.type = 'date';
+        try { dateInput.showPicker(); } catch (error) {}
+      }
+    });
+    dateInput.addEventListener('blur', function(){
+      if (!dateInput.value) dateInput.type = 'text';
+    });
+  }
+
+  var booking = document.getElementById('booking');
+  if (booking) {
+    booking.addEventListener('submit', function(event){
+      event.preventDefault();
+      var value = dateInput ? dateInput.value : '';
+      var message = 'Bonjour Hôtel Musalala, je souhaite réserver une chambre';
+      if (value) {
+        var parts = value.split('-');
+        message += ' à partir du ' + parts[2] + '/' + parts[1] + '/' + parts[0];
+      }
+      message += '. Pouvez-vous me confirmer les disponibilités, la date de départ et le nombre de voyageurs ? Merci.';
+      window.open('https://wa.me/' + WHATSAPP_NUMBER + '?text=' + encodeURIComponent(message), '_blank', 'noopener');
+    });
+  }
+
+  var observer = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if (entry.isIntersecting) {
+        entry.target.classList.add('in');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+
+  document.querySelectorAll('.reveal').forEach(function(element){
+    observer.observe(element);
+  });
 })();
 </script>
 </body>
